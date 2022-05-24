@@ -12,8 +12,8 @@ if memo_type == 1       #メモ新規作成の処理
 
     #メモの内容記述
     puts "記載内容を記述してください。"
-    puts "記述後、【Enter】で内容を出力します。"
-    memo_text = gets.to_s
+    puts "記述後、【 Ctrl + D 】で内容を出力します。"
+    memo_text = readlines
 
     #メモの内容をcsvファイルに入力
     CSV.open("#{memo_name}.csv","w") do |csv|
@@ -29,8 +29,8 @@ elsif memo_type == 2        #既存メモを編集
     end
 
     puts "追加する内容を記述してください。"
-    puts "記述後、【Enter】で内容を追記します。"
-    memo_text = gets.to_s
+    puts "記述後、【 Ctrl + D 】で内容を追記します。"
+    memo_text = readlines
     CSV.open("#{memo_name}.csv","a") do |csv|
         csv << ["#{memo_text}"]
     end
